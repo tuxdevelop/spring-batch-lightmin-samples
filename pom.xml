@@ -16,7 +16,7 @@
     <version>0.2.0-SNAPSHOT</version>
 
     <properties>
-        <platform-bom.version>2.0.2.RELEASE</platform-bom.version>
+        <platform-bom.version>2.0.3.RELEASE</platform-bom.version>
         <lightmin.version>0.2.0-SNAPSHOT</lightmin.version>
         <datafactory.version>0.8</datafactory.version>
         <!-- plugin versions -->
