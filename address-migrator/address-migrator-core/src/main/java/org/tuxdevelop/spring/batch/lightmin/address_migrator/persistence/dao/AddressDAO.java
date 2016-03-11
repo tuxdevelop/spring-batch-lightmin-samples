@@ -17,8 +17,12 @@ public class AddressDAO {
 
     private static final String GET_BY_ID_QUERY = "SELECT * FROM address WHERE id = ?";
 
-    @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    public AddressDAO(final JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     public void add(final Address address) {
         jdbcTemplate.update(INSERT_STATEMENT, new Object[]{address.getId(), address.getStreetLine(), address
@@ -34,7 +38,7 @@ public class AddressDAO {
     private static class AddressRowMapper implements RowMapper<Address> {
 
         @Override
-        public Address mapRow(ResultSet resultSet, int i) throws SQLException {
+        public Address mapRow(final ResultSet resultSet, final int i) throws SQLException {
 
             final Address address = new Address();
             address.setId(resultSet.getLong("id"));

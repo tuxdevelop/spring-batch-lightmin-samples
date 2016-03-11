@@ -17,8 +17,12 @@ public class BatchTaskAddressDAO {
     private static final String UPDATE_PROCESSING_STATE = "UPDATE batch_task_address SET processing_state = ? WHERE " +
             "batch_task_id = ?";
 
+    private final JdbcTemplate jdbcTemplate;
+
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    public BatchTaskAddressDAO(final JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     public void add(final BatchTaskAddress batchTaskAddress) {
         jdbcTemplate.update(INSERT_STATEMENT, new Object[]{batchTaskAddress.getProcessingState(), batchTaskAddress

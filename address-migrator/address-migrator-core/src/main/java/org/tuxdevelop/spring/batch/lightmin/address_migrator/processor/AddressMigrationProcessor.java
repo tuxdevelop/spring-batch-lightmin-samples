@@ -4,16 +4,22 @@ package org.tuxdevelop.spring.batch.lightmin.address_migrator.processor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.tuxdevelop.spring.batch.lightmin.address_migrator.domain.Address;
 import org.tuxdevelop.spring.batch.lightmin.address_migrator.domain.BatchTaskAddress;
 import org.tuxdevelop.spring.batch.lightmin.address_migrator.domain.ProcessingState;
 import org.tuxdevelop.spring.batch.lightmin.address_migrator.persistence.dao.AddressDAO;
 
 @Slf4j
+@Component
 public class AddressMigrationProcessor implements ItemProcessor<BatchTaskAddress, BatchTaskAddress> {
 
+    private final AddressDAO addressDAO;
+
     @Autowired
-    private AddressDAO addressDAO;
+    public AddressMigrationProcessor(final AddressDAO addressDAO) {
+        this.addressDAO = addressDAO;
+    }
 
     @Override
     public BatchTaskAddress process(final BatchTaskAddress batchTaskAddress) throws Exception {

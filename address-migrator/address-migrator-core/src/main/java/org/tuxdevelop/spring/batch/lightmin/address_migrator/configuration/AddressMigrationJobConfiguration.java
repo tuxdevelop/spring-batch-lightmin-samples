@@ -4,10 +4,12 @@ import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.item.ItemProcessor;
+import org.springframework.batch.item.ItemStreamReader;
+import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.database.ItemSqlParameterSourceProvider;
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.batch.item.database.JdbcCursorItemReader;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -15,7 +17,6 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.tuxdevelop.spring.batch.lightmin.address_migrator.domain.BatchTaskAddress;
 import org.tuxdevelop.spring.batch.lightmin.address_migrator.domain.ProcessingState;
 import org.tuxdevelop.spring.batch.lightmin.address_migrator.mapper.BatchTaskAddressMapper;
-import org.tuxdevelop.spring.batch.lightmin.address_migrator.processor.AddressMigrationProcessor;
 
 import javax.sql.DataSource;
 
@@ -27,34 +28,30 @@ public class AddressMigrationJobConfiguration {
     private static final String UPDATE_ADDRESS_STATEMENT =
             "UPDATE batch_task_address SET processing_state = :processing_state WHERE batch_task_id = :batch_task_id";
 
-    @Autowired
-    private JobBuilderFactory jobBuilderFactory;
-
-    @Autowired
-    private StepBuilderFactory stepBuilderFactory;
-
-    @Autowired
-    private DataSource dataSource;
-
     @Bean
-    public Job addressMigrationJob() throws Exception {
+    public Job addressMigrationJob(final JobBuilderFactory jobBuilderFactory,
+                                   final Step addressMigrationStep) throws Exception {
         return jobBuilderFactory.get("addressMigrationJob")
-                .start(addressMigrationStep())
+                .start(addressMigrationStep)
                 .build();
     }
 
     @Bean
-    public Step addressMigrationStep() throws Exception {
+    public Step addressMigrationStep(final StepBuilderFactory stepBuilderFactory,
+                                     final ItemStreamReader<BatchTaskAddress> addressReader,
+                                     final ItemProcessor<BatchTaskAddress, BatchTaskAddress>
+                                             addressMigrationProcessor,
+                                     final ItemWriter<BatchTaskAddress> addressWriter) throws Exception {
         return stepBuilderFactory.get("addressMigrationStep")
                 .<BatchTaskAddress, BatchTaskAddress>chunk(1)
-                .reader(addressReader())
-                .processor(addressMigrationProcessor())
-                .writer(addressWriter())
+                .reader(addressReader)
+                .processor(addressMigrationProcessor)
+                .writer(addressWriter)
                 .build();
     }
 
     @Bean
-    public JdbcCursorItemReader<BatchTaskAddress> addressReader() throws Exception {
+    public JdbcCursorItemReader<BatchTaskAddress> addressReader(final DataSource dataSource) throws Exception {
         final JdbcCursorItemReader<BatchTaskAddress> reader = new JdbcCursorItemReader<BatchTaskAddress>();
         reader.setSql(SELECT_ADDRESS_QUERY);
         reader.setRowMapper(new BatchTaskAddressMapper());
@@ -65,12 +62,7 @@ public class AddressMigrationJobConfiguration {
     }
 
     @Bean
-    public AddressMigrationProcessor addressMigrationProcessor() {
-        return new AddressMigrationProcessor();
-    }
-
-    @Bean
-    public JdbcBatchItemWriter<BatchTaskAddress> addressWriter() {
+    public JdbcBatchItemWriter<BatchTaskAddress> addressWriter(final DataSource dataSource) {
         final JdbcBatchItemWriter<BatchTaskAddress> writer = new JdbcBatchItemWriter<BatchTaskAddress>();
         writer.setDataSource(dataSource);
         writer.setSql(UPDATE_ADDRESS_STATEMENT);

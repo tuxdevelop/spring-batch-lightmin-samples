@@ -1,6 +1,5 @@
 package org.tuxdevelop.spring.batch.lightmin.address_migrator.configuration;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -10,14 +9,12 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.tuxdevelop.spring.batch.lightmin.admin.repository.JdbcJobConfigurationRepository;
 import org.tuxdevelop.spring.batch.lightmin.admin.repository.JobConfigurationRepository;
+import org.tuxdevelop.spring.batch.lightmin.configuration.SpringBatchLightminConfigurationProperties;
 
 import javax.sql.DataSource;
 
 @Configuration
 public class PersistenceConfiguration {
-
-    @Value("${table.prefix:BATCH_}")
-    private String tablePrefix;
 
     @Bean
     public DataSource dataSource() {
@@ -39,7 +36,7 @@ public class PersistenceConfiguration {
     }
 
     @Bean
-    public JobConfigurationRepository jobConfigurationRepository() {
-        return new JdbcJobConfigurationRepository(jdbcTemplate(), tablePrefix);
+    public JobConfigurationRepository jobConfigurationRepository(final SpringBatchLightminConfigurationProperties springBatchLightminConfigurationProperties) {
+        return new JdbcJobConfigurationRepository(jdbcTemplate(), springBatchLightminConfigurationProperties.getConfigurationTablePrefix());
     }
 }
