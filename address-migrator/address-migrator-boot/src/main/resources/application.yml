@@ -2,3 +2,8 @@
 server:
   port: 9009
   servlet-path: /addressMigrator/
+spring:
+  batch:
+    lightmin:
+      server:
+        url: http://localhost:50100

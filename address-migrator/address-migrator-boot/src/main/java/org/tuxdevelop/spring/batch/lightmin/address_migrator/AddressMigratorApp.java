@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.batch.BatchAutoConfiguration;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.tuxdevelop.spring.batch.lightmin.configuration.EnableSpringBatchLightminUI;
+import org.tuxdevelop.spring.batch.lightmin.client.configuration.EnableSpringBatchLightminClient;
 
 @EnableScheduling
-@EnableSpringBatchLightminUI
+@EnableSpringBatchLightminClient
 @SpringBootApplication(exclude = {BatchAutoConfiguration.class})
 public class AddressMigratorApp {
 
