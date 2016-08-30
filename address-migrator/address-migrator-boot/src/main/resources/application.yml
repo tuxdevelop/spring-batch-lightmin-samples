@@ -3,6 +3,8 @@ server:
   port: 9009
   servlet-path: /addressMigrator/
 spring:
+  application:
+    name: address-migrator
   batch:
     lightmin:
       server:
