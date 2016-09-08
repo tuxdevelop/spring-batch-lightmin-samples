@@ -19,6 +19,12 @@ VALUES (
   'NONE'
 );
 
+INSERT INTO BATCH_JOB_CONFIGURATION
+(job_name, job_incrementer)
+VALUES (
+  'addressImportJob',
+  'DATE_INCREMENTER'
+);
 
 INSERT INTO BATCH_JOB_SCHEDULER_CONFIGURATION
 (job_configuration_id, scheduler_type, initial_delay, fixed_delay, task_executor_type, bean_name, status)
@@ -55,5 +61,18 @@ VALUES (
   1,
   'addressPrinterJobSYNCHRONOUSLY1',
   'RUNNING'
+);
+
+INSERT INTO BATCH_JOB_LISTENER_CONFIGURATION
+(job_configuration_id, listener_type, source_folder, file_pattern, poller_period, task_executor_type, bean_name, status)
+VALUES (
+  4,
+  1,
+  'input',
+  '*.txt',
+  1000,
+  2,
+  'addressImportJobJobASYNCHRONOUSLY4',
+  'ACTIVE'
 );
 

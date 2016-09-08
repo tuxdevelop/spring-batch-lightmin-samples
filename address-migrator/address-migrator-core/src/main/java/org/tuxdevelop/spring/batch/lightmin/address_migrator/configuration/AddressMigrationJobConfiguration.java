@@ -39,8 +39,7 @@ public class AddressMigrationJobConfiguration {
     @Bean
     public Step addressMigrationStep(final StepBuilderFactory stepBuilderFactory,
                                      final ItemStreamReader<BatchTaskAddress> addressReader,
-                                     final ItemProcessor<BatchTaskAddress, BatchTaskAddress>
-                                             addressMigrationProcessor,
+                                     final ItemProcessor<BatchTaskAddress, BatchTaskAddress> addressMigrationProcessor,
                                      final ItemWriter<BatchTaskAddress> addressWriter) throws Exception {
         return stepBuilderFactory.get("addressMigrationStep")
                 .<BatchTaskAddress, BatchTaskAddress>chunk(1)
@@ -51,10 +50,11 @@ public class AddressMigrationJobConfiguration {
     }
 
     @Bean
-    public JdbcCursorItemReader<BatchTaskAddress> addressReader(final DataSource dataSource) throws Exception {
-        final JdbcCursorItemReader<BatchTaskAddress> reader = new JdbcCursorItemReader<BatchTaskAddress>();
+    public JdbcCursorItemReader<BatchTaskAddress> addressReader(final DataSource dataSource,
+                                                                final BatchTaskAddressMapper batchTaskAddressMapper) throws Exception {
+        final JdbcCursorItemReader<BatchTaskAddress> reader = new JdbcCursorItemReader<>();
         reader.setSql(SELECT_ADDRESS_QUERY);
-        reader.setRowMapper(new BatchTaskAddressMapper());
+        reader.setRowMapper(batchTaskAddressMapper);
         reader.setDataSource(dataSource);
         reader.setMaxRows(100);
         reader.afterPropertiesSet();
@@ -63,7 +63,7 @@ public class AddressMigrationJobConfiguration {
 
     @Bean
     public JdbcBatchItemWriter<BatchTaskAddress> addressWriter(final DataSource dataSource) {
-        final JdbcBatchItemWriter<BatchTaskAddress> writer = new JdbcBatchItemWriter<BatchTaskAddress>();
+        final JdbcBatchItemWriter<BatchTaskAddress> writer = new JdbcBatchItemWriter<>();
         writer.setDataSource(dataSource);
         writer.setSql(UPDATE_ADDRESS_STATEMENT);
         writer.setItemSqlParameterSourceProvider(new ItemSqlParameterSourceProvider<BatchTaskAddress>() {

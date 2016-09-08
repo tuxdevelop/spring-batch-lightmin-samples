@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>address-migrator-boot</artifactId>
+    <artifactId>addres-migrator-boot-embedded</artifactId>
 
     <dependencies>
         <dependency>
@@ -17,6 +17,13 @@
             <artifactId>address-migrator-core</artifactId>
             <version>${parent.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.tuxdevelop</groupId>
+            <artifactId>spring-batch-lightmin-server</artifactId>
+            <version>${lightmin.version}</version>
+        </dependency>
+
     </dependencies>
 
 </project>

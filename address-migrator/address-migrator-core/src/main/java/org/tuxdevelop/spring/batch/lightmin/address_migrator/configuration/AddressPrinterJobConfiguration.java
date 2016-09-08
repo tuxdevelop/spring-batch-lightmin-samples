@@ -30,14 +30,17 @@ import java.util.List;
 @Configuration
 public class AddressPrinterJobConfiguration {
 
-    private static final String SELECT_ADDRESS_QUERY = "SELECT batch_task_id FROM batch_task_address WHERE processing_state = " +
-            ProcessingState.SUCCESS;
+    private static final String SELECT_ADDRESS_QUERY =
+            "SELECT batch_task_id FROM batch_task_address " +
+                    "WHERE processing_state = " + ProcessingState.SUCCESS;
 
-    private static final String SELECT_BATCH_TASK_ADDRESS_TO_DELETE_QUERY = "SELECT batch_task_id FROM batch_task_address " +
-            "WHERE processing_state = " + ProcessingState.PRINTED;
+    private static final String SELECT_BATCH_TASK_ADDRESS_TO_DELETE_QUERY =
+            "SELECT batch_task_id FROM batch_task_address " +
+                    "WHERE processing_state = " + ProcessingState.PRINTED;
 
-    private static final String DELETE_BATCH_TASK_ADDRESS_STATEMENT = "DELETE FROM batch_task_address WHERE " +
-            "batch_task_id = :batch_task_id";
+    private static final String DELETE_BATCH_TASK_ADDRESS_STATEMENT =
+            "DELETE FROM batch_task_address " +
+                    "WHERE batch_task_id = :batch_task_id";
 
     @Bean
     public Job addressPrinterJob(final JobBuilderFactory jobBuilderFactory,
@@ -112,7 +115,7 @@ public class AddressPrinterJobConfiguration {
 
     @Bean
     public JdbcBatchItemWriter<Long> addressBatchTaskDeletionWriter(final DataSource dataSource) {
-        final JdbcBatchItemWriter<Long> writer = new JdbcBatchItemWriter<Long>();
+        final JdbcBatchItemWriter<Long> writer = new JdbcBatchItemWriter<>();
         writer.setDataSource(dataSource);
         writer.setSql(DELETE_BATCH_TASK_ADDRESS_STATEMENT);
         writer.setItemSqlParameterSourceProvider(new ItemSqlParameterSourceProvider<Long>() {
@@ -128,7 +131,7 @@ public class AddressPrinterJobConfiguration {
 
     @Bean
     public JdbcCursorItemReader<Long> addressPrinterReader(final DataSource dataSource) throws Exception {
-        final JdbcCursorItemReader<Long> reader = new JdbcCursorItemReader<Long>();
+        final JdbcCursorItemReader<Long> reader = new JdbcCursorItemReader<>();
         reader.setSql(SELECT_ADDRESS_QUERY);
         reader.setRowMapper(new SingleColumnRowMapper<Long>());
         reader.setDataSource(dataSource);
@@ -139,7 +142,7 @@ public class AddressPrinterJobConfiguration {
 
     @Bean
     public JdbcCursorItemReader<Long> addressBatchTaskDeletionReader(final DataSource dataSource) throws Exception {
-        final JdbcCursorItemReader<Long> reader = new JdbcCursorItemReader<Long>();
+        final JdbcCursorItemReader<Long> reader = new JdbcCursorItemReader<>();
         reader.setSql(SELECT_BATCH_TASK_ADDRESS_TO_DELETE_QUERY);
         reader.setRowMapper(new SingleColumnRowMapper<Long>());
         reader.setDataSource(dataSource);

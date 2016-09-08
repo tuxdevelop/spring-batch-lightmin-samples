@@ -1,10 +1,10 @@
-#Lightmin
-
-#SPRING BOOT
-
 #Logging
 logging:
  level:
   org:
    springframework:
     web: DEBUG
+spring:
+  batch:
+    job:
+      enabled: false

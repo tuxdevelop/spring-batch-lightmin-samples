@@ -10,13 +10,13 @@ import org.tuxdevelop.spring.batch.lightmin.address_migrator.persistence.dao.Bat
 @Component
 public class BatchTaskAddressPopulator {
 
+    private final BatchTaskAddressDAO batchTaskAddressDAO;
+    private final DataFactory dataFactory;
+
     @Autowired
-    private BatchTaskAddressDAO batchTaskAddressDAO;
-
-    private DataFactory dataFactory;
-
-    public BatchTaskAddressPopulator() {
+    public BatchTaskAddressPopulator(final BatchTaskAddressDAO batchTaskAddressDAO) {
         this.dataFactory = new DataFactory();
+        this.batchTaskAddressDAO = batchTaskAddressDAO;
     }
 
     @Scheduled(fixedDelay = 300000L)

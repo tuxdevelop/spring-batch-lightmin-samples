@@ -2,12 +2,14 @@ package org.tuxdevelop.spring.batch.lightmin.address_migrator.mapper;
 
 
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 import org.tuxdevelop.spring.batch.lightmin.address_migrator.domain.BatchTaskAddress;
 import org.tuxdevelop.spring.batch.lightmin.address_migrator.domain.BatchTaskAddressDomain;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Component
 public class BatchTaskAddressMapper implements RowMapper<BatchTaskAddress> {
     @Override
     public BatchTaskAddress mapRow(final ResultSet resultSet, final int rowNum) throws SQLException {
