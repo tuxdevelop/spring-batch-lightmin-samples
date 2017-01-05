@@ -18,7 +18,7 @@
 
     <properties>
         <platform-bom.version>2.0.7.RELEASE</platform-bom.version>
-        <lightmin.version>0.3.1-SNAPSHOT</lightmin.version>
+        <lightmin.version>0.3.3</lightmin.version>
         <datafactory.version>0.8</datafactory.version>
         <!-- plugin versions -->
         <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
