@@ -10,6 +10,7 @@
     <modules>
         <module>address-migrator</module>
         <module>spring-batch-lightmin-server-sample</module>
+        <module>lightmin-jpa-application</module>
     </modules>
 
     <groupId>org.tuxdevelop</groupId>
@@ -17,8 +18,8 @@
     <version>0.3.1-SNAPSHOT</version>
 
     <properties>
-        <platform-bom.version>2.0.7.RELEASE</platform-bom.version>
-        <lightmin.version>0.3.3</lightmin.version>
+        <platform-bom.version>2.0.8.RELEASE</platform-bom.version>
+        <lightmin.version>0.3.5</lightmin.version>
         <datafactory.version>0.8</datafactory.version>
         <!-- plugin versions -->
         <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
