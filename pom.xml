@@ -20,7 +20,7 @@
 
     <properties>
         <platform-bom.version>Athens-SR3</platform-bom.version>
-        <lightmin.version>0.4.0-SNAPSHOT</lightmin.version>
+        <lightmin.version>0.4.0</lightmin.version>
         <datafactory.version>0.8</datafactory.version>
         <!-- plugin versions -->
         <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
