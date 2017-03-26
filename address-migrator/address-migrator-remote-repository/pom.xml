@@ -9,27 +9,13 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>address-migrator-core</artifactId>
+    <artifactId>address-migrator-remote-repository</artifactId>
 
     <dependencies>
-        <!-- spring batch lightmin -->
         <dependency>
             <groupId>org.tuxdevelop</groupId>
-            <artifactId>spring-batch-lightmin-client</artifactId>
-            <version>${lightmin.version}</version>
-        </dependency>
-
-        <!--H2 -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-        </dependency>
-
-        <!--datafactory -->
-        <dependency>
-            <groupId>org.fluttercode.datafactory</groupId>
-            <artifactId>datafactory</artifactId>
-            <version>${datafactory.version}</version>
+            <artifactId>address-migrator-core</artifactId>
+            <version>${parent.version}</version>
         </dependency>
     </dependencies>
 

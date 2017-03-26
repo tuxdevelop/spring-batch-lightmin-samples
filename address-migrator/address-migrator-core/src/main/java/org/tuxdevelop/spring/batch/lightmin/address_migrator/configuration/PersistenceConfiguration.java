@@ -16,8 +16,14 @@ public class PersistenceConfiguration {
     @Bean
     public DataSource dataSource() {
         final EmbeddedDatabaseBuilder embeddedDatabaseBuilder = new EmbeddedDatabaseBuilder();
-        return embeddedDatabaseBuilder.addScript("classpath:create.sql").addScript("classpath:schema_h2.sql")
-                .addScript("classpath:inserts.sql").setType(EmbeddedDatabaseType.H2).build();
+        return embeddedDatabaseBuilder
+                .addScript("classpath:ddl_address_migrator.sql")
+                .addScript("classpath:org/tuxdevelop/spring/batch/lightmin/drop_schema_h2.sql")
+                .addScript("classpath:org/tuxdevelop/spring/batch/lightmin/schema_h2.sql")
+                .addScript("classpath:org/springframework/batch/core/schema-drop-h2.sql")
+                .addScript("classpath:org/springframework/batch/core/schema-h2.sql")
+                .addScript("classpath:inserts_04.sql")
+                .setType(EmbeddedDatabaseType.H2).build();
     }
 
     @Bean

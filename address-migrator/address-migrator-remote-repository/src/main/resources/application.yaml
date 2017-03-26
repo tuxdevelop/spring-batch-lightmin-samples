@@ -1,10 +1,10 @@
 #Server
 server:
-  port: 9009
-  servlet-path: /addressMigrator
+  port: 9020
+  servlet-path: /addressMigratorRemoteRepository
 spring:
   application:
-    name: address-migrator
+    name: address-migrator-remote-application
   batch:
     lightmin:
       server:
@@ -16,11 +16,10 @@ spring:
       #default jdbc
       batch-repository-type: jdbc
       #default jdbc
-      lightmin-repository-type: jdbc
-      #default dataSource
-      data-source-name: dataSource
+      lightmin-repository-type: remote
       #default dataSource
       batch-data-source-name: dataSource
       #default BATCH_
       repository-table-prefix: BATCH_
-
+      #remote repository server url
+      remote-repository-server-url: http://localhost:50000

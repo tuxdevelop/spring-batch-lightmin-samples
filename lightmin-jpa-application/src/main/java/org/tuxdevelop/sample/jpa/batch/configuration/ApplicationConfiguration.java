@@ -87,21 +87,18 @@ public class ApplicationConfiguration {
 
     @Bean
     public CommandLineRunner commandLineRunner(final CustomerRepository customerRepository) {
-        return new CommandLineRunner() {
-            @Override
-            public void run(final String... strings) throws Exception {
-                final Customer customer1 = new Customer();
-                customer1.setFirstName("Josh");
-                customer1.setLastName("Long");
-                customer1.setValidationState(0);
-                final Customer customer2 = new Customer();
-                customer2.setFirstName("Oliver");
-                customer2.setLastName("Gierke");
-                customer2.setValidationState(0);
-                customerRepository.save(customer1);
-                customerRepository.save(customer2);
-                log.info("customers: {}", customerRepository.findAll());
-            }
+        return strings -> {
+            final Customer customer1 = new Customer();
+            customer1.setFirstName("Josh");
+            customer1.setLastName("Long");
+            customer1.setValidationState(0);
+            final Customer customer2 = new Customer();
+            customer2.setFirstName("Oliver");
+            customer2.setLastName("Gierke");
+            customer2.setValidationState(0);
+            customerRepository.save(customer1);
+            customerRepository.save(customer2);
+            log.info("customers: {}", customerRepository.findAll());
         };
     }
 

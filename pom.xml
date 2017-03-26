@@ -11,18 +11,21 @@
         <module>address-migrator</module>
         <module>spring-batch-lightmin-server-sample</module>
         <module>lightmin-jpa-application</module>
+        <module>spring-batch-lightmin-repository-server-sample</module>
     </modules>
 
     <groupId>org.tuxdevelop</groupId>
     <artifactId>spring-batch-lightmin-samples</artifactId>
-    <version>0.3.1-SNAPSHOT</version>
+    <version>0.4.0-SNAPSHOT</version>
 
     <properties>
-        <platform-bom.version>2.0.8.RELEASE</platform-bom.version>
-        <lightmin.version>0.3.5</lightmin.version>
+        <platform-bom.version>Athens-SR3</platform-bom.version>
+        <lightmin.version>0.4.0-SNAPSHOT</lightmin.version>
         <datafactory.version>0.8</datafactory.version>
         <!-- plugin versions -->
         <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
+        <maven-compiler-plugin.target>1.8</maven-compiler-plugin.target>
+        <maven-compiler-plugin.source>1.8</maven-compiler-plugin.source>
     </properties>
 
     <dependencyManagement>
@@ -69,8 +72,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>${maven-compiler-plugin.source}</source>
+                    <target>${maven-compiler-plugin.target}</target>
                     <encoding>UTF-8</encoding>
                     <showDeprecation>true</showDeprecation>
                     <showWarnings>true</showWarnings>
@@ -78,5 +81,13 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </repository>
+    </repositories>
+
 
 </project>

@@ -11,13 +11,9 @@ import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.database.JdbcCursorItemReader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.core.RowMapper;
 import org.tuxdevelop.sample.jpa.batch.persistence.domain.Customer;
 
 import javax.sql.DataSource;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.List;
 
 @Slf4j
 @Configuration
@@ -52,16 +48,13 @@ public class CustomerJobConfiguration {
         reader.setDataSource(dataSource);
         reader.setSql("SELECT * FROM customer WHERE validation_state = 0");
         reader.setMaxRows(10);
-        reader.setRowMapper(new RowMapper<Customer>() {
-            @Override
-            public Customer mapRow(final ResultSet resultSet, final int i) throws SQLException {
-                final Customer customer = new Customer();
-                customer.setCustomerId(resultSet.getLong("customer_id"));
-                customer.setFirstName(resultSet.getString("first_name"));
-                customer.setLastName(resultSet.getString("last_name"));
-                customer.setValidationState(resultSet.getInt("validation_state"));
-                return customer;
-            }
+        reader.setRowMapper((resultSet, i) -> {
+            final Customer customer = new Customer();
+            customer.setCustomerId(resultSet.getLong("customer_id"));
+            customer.setFirstName(resultSet.getString("first_name"));
+            customer.setLastName(resultSet.getString("last_name"));
+            customer.setValidationState(resultSet.getInt("validation_state"));
+            return customer;
         });
 
         reader.afterPropertiesSet();
@@ -70,13 +63,10 @@ public class CustomerJobConfiguration {
 
     @Bean
     public ItemWriter<Customer> customerItemWriter() {
-        return new ItemWriter<Customer>() {
-            @Override
-            public void write(final List<? extends Customer> customers) throws Exception {
-                if (customers != null && !customers.isEmpty()) {
-                    for (final Customer customer : customers) {
-                        log.info("Processed: {}", customer);
-                    }
+        return customers -> {
+            if (customers != null && !customers.isEmpty()) {
+                for (final Customer customer : customers) {
+                    log.info("Processed: {}", customer);
                 }
             }
         };
