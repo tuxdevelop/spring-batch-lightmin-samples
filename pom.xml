@@ -3,6 +3,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
+    <parent>
+        <groupId>io.spring.platform</groupId>
+        <artifactId>platform-bom</artifactId>
+        <version>Brussels-SR5</version>
+    </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
     <packaging>pom</packaging>
@@ -12,6 +18,8 @@
         <module>spring-batch-lightmin-server-sample</module>
         <module>lightmin-jpa-application</module>
         <module>spring-batch-lightmin-repository-server-sample</module>
+        <module>spring-batch-lightmin-server-sample-discovery-eureka</module>
+        <module>eureka-server</module>
     </modules>
 
     <groupId>org.tuxdevelop</groupId>
@@ -19,7 +27,8 @@
     <version>0.5.0-SNAPSHOT</version>
 
     <properties>
-        <platform-bom.version>Athens-SR3</platform-bom.version>
+        <platform-bom.version>Brussels-SR5</platform-bom.version>
+        <spring-cloud-dependencies.version>Dalston.SR4</spring-cloud-dependencies.version>
         <lightmin.version>0.5.0-SNAPSHOT</lightmin.version>
         <datafactory.version>0.8</datafactory.version>
         <!-- plugin versions -->
@@ -34,6 +43,13 @@
                 <groupId>io.spring.platform</groupId>
                 <artifactId>platform-bom</artifactId>
                 <version>${platform-bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud-dependencies.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
