@@ -1,0 +1,27 @@
+#Server
+server:
+  port: 9009
+  servlet-path: /addressMigrator
+spring:
+  application:
+    name: address-migrator
+  batch:
+    lightmin:
+      server:
+        url: http://localhost:50100/lightmin-server
+      client:
+        external-links:
+          hystrix: http://localhost:${server.port}/hystrixdashboard
+          batchtasks: http://localhost:${server.port}/batchtasks
+      #default jdbc
+      batch-repository-type: jdbc
+      #default jdbc
+      lightmin-repository-type: jdbc
+      #default dataSource
+      data-source-name: dataSource
+      #default dataSource
+      batch-data-source-name: dataSource
+      #default BATCH_
+      repository-table-prefix: BATCH_
+    job:
+      enabled: false

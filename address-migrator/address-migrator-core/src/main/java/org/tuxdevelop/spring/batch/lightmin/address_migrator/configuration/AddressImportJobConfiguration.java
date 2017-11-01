@@ -5,7 +5,9 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.step.tasklet.Tasklet;
+import org.springframework.batch.item.ItemStreamReader;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.LineMapper;
@@ -15,6 +17,7 @@ import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.core.io.FileSystemResource;
 import org.tuxdevelop.spring.batch.lightmin.address_migrator.domain.BatchTaskAddress;
 import org.tuxdevelop.spring.batch.lightmin.address_migrator.domain.ProcessingState;
@@ -23,6 +26,7 @@ import org.tuxdevelop.spring.batch.lightmin.address_migrator.persistence.dao.Bat
 import java.io.File;
 
 @Configuration
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 public class AddressImportJobConfiguration {
 
     @Bean
@@ -46,7 +50,7 @@ public class AddressImportJobConfiguration {
     }
 
     @Bean
-    public Step addressImportStep(final FlatFileItemReader<BatchTaskAddress> fileItemReader,
+    public Step addressImportStep(final ItemStreamReader<BatchTaskAddress> fileItemReader,
                                   final ItemWriter<BatchTaskAddress> addressDatabaseWriter,
                                   final StepBuilderFactory stepBuilderFactory) {
         return stepBuilderFactory
@@ -58,9 +62,9 @@ public class AddressImportJobConfiguration {
     }
 
     @Bean
-    @JobScope
-    public FlatFileItemReader<BatchTaskAddress> fileItemReader(@Value("#{jobParameters['fileSource']}") final String pathToFile,
-                                                               final LineMapper<BatchTaskAddress> lineMapper) throws
+    @StepScope
+    public ItemStreamReader<BatchTaskAddress> fileItemReader(@Value("#{jobParameters['fileSource']}") final String pathToFile,
+                                                             final LineMapper<BatchTaskAddress> lineMapper) throws
             Exception {
         final FlatFileItemReader<BatchTaskAddress> reader = new FlatFileItemReader<>();
         reader.setEncoding("utf-8");
