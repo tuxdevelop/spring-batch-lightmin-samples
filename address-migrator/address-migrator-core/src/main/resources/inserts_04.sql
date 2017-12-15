@@ -34,6 +34,16 @@ VALUES (
   2
 );
 
+INSERT INTO BATCH_JOB_CONFIGURATION
+(job_name, application_name, job_incrementer, job_configuration_type)
+VALUES (
+  'addressLogJob',
+  'address-migrator',
+  'DATE_INCREMENTER',
+  2
+);
+
+
 -- scheduler configuration values 1
 
 INSERT INTO BATCH_JOB_CONFIGURATION_VALUE
@@ -246,4 +256,63 @@ VALUES (
   'ACTIVE'
 );
 
+
+-- listener configuration values 5
+
+INSERT INTO BATCH_JOB_CONFIGURATION_VALUE
+(job_configuration_id, value_key, configuration_value)
+VALUES (
+  5,
+  'listener_type',
+  1
+);
+
+INSERT INTO BATCH_JOB_CONFIGURATION_VALUE
+(job_configuration_id, value_key, configuration_value)
+VALUES (
+  5,
+  'source_folder',
+  'input'
+);
+
+
+INSERT INTO BATCH_JOB_CONFIGURATION_VALUE
+(job_configuration_id, value_key, configuration_value)
+VALUES (
+  5,
+  'file_pattern',
+  '*.txt'
+);
+
+INSERT INTO BATCH_JOB_CONFIGURATION_VALUE
+(job_configuration_id, value_key, configuration_value)
+VALUES (
+  5,
+  'poller_period',
+  1000
+);
+
+INSERT INTO BATCH_JOB_CONFIGURATION_VALUE
+(job_configuration_id, value_key, configuration_value)
+VALUES (
+  5,
+  'task_executor_type',
+  1
+);
+
+INSERT INTO BATCH_JOB_CONFIGURATION_VALUE
+(job_configuration_id, value_key, configuration_value)
+VALUES (
+  5,
+  'bean_name',
+  'addressMigrationJobSYNCHRONOUSLY5'
+);
+
+INSERT INTO BATCH_JOB_CONFIGURATION_VALUE
+(job_configuration_id, value_key, configuration_value)
+VALUES (
+  5,
+  'status',
+  'ACTIVE'
+);
 
