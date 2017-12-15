@@ -12,6 +12,12 @@
     <artifactId>address-migrator-core</artifactId>
 
     <dependencies>
+        <!-- aspectj -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+        </dependency>
+
         <!-- spring batch lightmin -->
         <dependency>
             <groupId>org.tuxdevelop</groupId>
