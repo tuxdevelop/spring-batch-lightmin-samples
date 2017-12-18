@@ -6,7 +6,7 @@
     <parent>
         <groupId>io.spring.platform</groupId>
         <artifactId>platform-bom</artifactId>
-        <version>Brussels-SR5</version>
+        <version>Brussels-SR6</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -20,6 +20,7 @@
         <module>spring-batch-lightmin-repository-server-sample</module>
         <module>spring-batch-lightmin-server-sample-discovery-eureka</module>
         <module>eureka-server</module>
+        <module>spring-batch-lightmin-server-sample-discovery-consul</module>
     </modules>
 
     <groupId>org.tuxdevelop</groupId>

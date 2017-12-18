@@ -12,4 +12,25 @@
     <artifactId>spring-batch-lightmin-server-sample-discovery-consul</artifactId>
 
 
+    <dependencies>
+        <dependency>
+            <groupId>org.tuxdevelop</groupId>
+            <artifactId>spring-batch-lightmin-server</artifactId>
+            <version>${lightmin.version}</version>
+        </dependency>
+
+        <!-- spring cloud -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+        </dependency>
+
+        <!-- h2 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
+
+    </dependencies>
+
 </project>
