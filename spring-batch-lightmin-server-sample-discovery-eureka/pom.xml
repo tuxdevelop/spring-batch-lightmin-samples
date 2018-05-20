@@ -18,6 +18,12 @@
             <version>${lightmin.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.tuxdevelop</groupId>
+            <artifactId>spring-batch-lightmin-repository-server</artifactId>
+            <version>${lightmin.version}</version>
+        </dependency>
+
         <!-- spring cloud -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

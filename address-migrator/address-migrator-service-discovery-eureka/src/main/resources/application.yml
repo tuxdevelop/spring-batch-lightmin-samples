@@ -15,10 +15,14 @@ spring:
       #default jdbc
       batch-repository-type: jdbc
       #default jdbc
-      lightmin-repository-type: jdbc
-      #default dataSource
-      data-source-name: dataSource
+      lightmin-repository-type: remote
       #default dataSource
       batch-data-source-name: dataSource
       #default BATCH_
       repository-table-prefix: BATCH_
+      #remote repository
+      remote-repository-server-discovery-name: spring-batch-lightmin-server
+      discover-remote-repository: true
+logging:
+  level:
+    org.tuxdevelop: debug
