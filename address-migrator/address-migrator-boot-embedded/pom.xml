@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>addres-migrator-boot-embedded</artifactId>
+    <artifactId>address-migrator-boot-embedded</artifactId>
 
     <dependencies>
         <dependency>

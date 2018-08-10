@@ -14,6 +14,8 @@ spring:
           hystrix: http://localhost:${server.port}/hystrixdashboard
           batchtasks: http://localhost:${server.port}/batchtasks
         discovery-enabled: true
+        discover-server: true
+        server-discovery-name: spring-batch-lightmin-server
       #default jdbc
       batch-repository-type: jdbc
       #default jdbc
