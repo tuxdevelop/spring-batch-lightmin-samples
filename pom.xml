@@ -6,7 +6,7 @@
     <parent>
         <groupId>io.spring.platform</groupId>
         <artifactId>platform-bom</artifactId>
-        <version>Brussels-SR10</version>
+        <version>Brussels-SR12</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -99,12 +99,12 @@
         </plugins>
     </build>
 
-    <repositories>
+    <!--<repositories>
         <repository>
             <id>ossrh</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </repository>
-    </repositories>
+    </repositories> -->
 
 
 </project>

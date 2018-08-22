@@ -7,7 +7,6 @@ import org.tuxdevelop.spring.batch.lightmin.server.configuration.EnableSpringBat
 
 @SpringBootApplication
 @EnableSpringBatchLightminServer
-@EnableSpringBatchLightminClient
 public class LightminServer {
 
 
