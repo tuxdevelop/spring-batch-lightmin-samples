@@ -3,31 +3,26 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>spring-batch-lightmin-samples</artifactId>
+        <artifactId>address-migrator</artifactId>
         <groupId>org.tuxdevelop</groupId>
         <version>0.5.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>lightmin-jpa-application</artifactId>
+    <artifactId>address-migrator-service-discovery-consul</artifactId>
 
     <dependencies>
-        <!-- spring batch lightmin -->
         <dependency>
             <groupId>org.tuxdevelop</groupId>
-            <artifactId>spring-batch-lightmin-server</artifactId>
-            <version>${lightmin.version}</version>
+            <artifactId>address-migrator-core</artifactId>
+            <version>${project.version}</version>
         </dependency>
-        <!-- spring boot -->
+
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <!-- h2 -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-consul-discovery</artifactId>
         </dependency>
     </dependencies>
+
 
 </project>

@@ -1,0 +1,14 @@
+server:
+  port: 51500
+spring:
+  application:
+    name: spring-batch-lightmin-server
+  batch:
+    job:
+      enabled: false
+    lightmin:
+      lightmin-repository-type: jdbc
+      batch-repository-type: map
+      server:
+        heartbeat-period: 1000
+        discovery-enabled: true

@@ -1,16 +1,21 @@
-#Server
 server:
-  port: 9009
-  servlet-path: /addressMigrator
+  port: 9090
 spring:
   application:
     name: address-migrator
+  cloud:
+    consul:
+      discovery:
+        instance-id: ${spring.application.name}
   batch:
     lightmin:
       client:
         external-links:
           hystrix: http://localhost:${server.port}/hystrixdashboard
           batchtasks: http://localhost:${server.port}/batchtasks
+        discovery-enabled: true
+        discover-server: true
+        server-discovery-name: spring-batch-lightmin-server
       #default jdbc
       batch-repository-type: jdbc
       #default jdbc
@@ -21,6 +26,3 @@ spring:
       batch-data-source-name: dataSource
       #default BATCH_
       repository-table-prefix: BATCH_
-    job:
-      enabled: false
-

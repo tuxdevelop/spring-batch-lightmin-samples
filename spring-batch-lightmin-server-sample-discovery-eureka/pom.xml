@@ -9,20 +9,27 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>lightmin-jpa-application</artifactId>
+    <artifactId>spring-batch-lightmin-server-sample-discovery-eureka</artifactId>
 
     <dependencies>
-        <!-- spring batch lightmin -->
         <dependency>
             <groupId>org.tuxdevelop</groupId>
             <artifactId>spring-batch-lightmin-server</artifactId>
             <version>${lightmin.version}</version>
         </dependency>
-        <!-- spring boot -->
+
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <groupId>org.tuxdevelop</groupId>
+            <artifactId>spring-batch-lightmin-repository-server</artifactId>
+            <version>${lightmin.version}</version>
         </dependency>
+
+        <!-- spring cloud -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+        </dependency>
+
         <!-- h2 -->
         <dependency>
             <groupId>com.h2database</groupId>

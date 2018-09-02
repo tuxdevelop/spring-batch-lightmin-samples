@@ -9,10 +9,10 @@ import org.tuxdevelop.spring.batch.lightmin.client.configuration.EnableSpringBat
 @EnableScheduling
 @EnableSpringBatchLightminClient
 @SpringBootApplication(exclude = {BatchAutoConfiguration.class})
-public class AddressMigratorApp {
+public class AddressMigratorClientApp {
 
     public static void main(final String[] args) {
-        SpringApplication.run(AddressMigratorApp.class, args);
+        SpringApplication.run(AddressMigratorClientApp.class, args);
     }
 
 }

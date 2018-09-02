@@ -1,7 +1,5 @@
-#Server
 server:
-  port: 9009
-  servlet-path: /addressMigrator
+  port: 9080
 spring:
   application:
     name: address-migrator
@@ -11,16 +9,20 @@ spring:
         external-links:
           hystrix: http://localhost:${server.port}/hystrixdashboard
           batchtasks: http://localhost:${server.port}/batchtasks
+        discovery-enabled: true
+        discover-server: true
+        server-discovery-name: spring-batch-lightmin-server
       #default jdbc
       batch-repository-type: jdbc
       #default jdbc
-      lightmin-repository-type: jdbc
-      #default dataSource
-      data-source-name: dataSource
+      lightmin-repository-type: remote
       #default dataSource
       batch-data-source-name: dataSource
       #default BATCH_
       repository-table-prefix: BATCH_
-    job:
-      enabled: false
-
+      #remote repository
+      remote-repository-server-discovery-name: spring-batch-lightmin-server
+      discover-remote-repository: true
+logging:
+  level:
+    org.tuxdevelop: debug

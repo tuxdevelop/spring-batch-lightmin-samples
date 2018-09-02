@@ -5,7 +5,6 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
-import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.item.ItemStreamReader;
 import org.springframework.batch.item.ItemWriter;
@@ -62,7 +61,7 @@ public class AddressImportJobConfiguration {
     }
 
     @Bean
-    @StepScope
+    @JobScope
     public ItemStreamReader<BatchTaskAddress> fileItemReader(@Value("#{jobParameters['fileSource']}") final String pathToFile,
                                                              final LineMapper<BatchTaskAddress> lineMapper) throws
             Exception {
