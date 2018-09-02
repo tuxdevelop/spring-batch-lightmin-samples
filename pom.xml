@@ -30,7 +30,7 @@
     <properties>
         <platform-bom.version>Brussels-SR12</platform-bom.version>
         <spring-cloud-dependencies.version>Edgware.SR4</spring-cloud-dependencies.version>
-        <lightmin.version>0.5.0-SNAPSHOT</lightmin.version>
+        <lightmin.version>0.5.0</lightmin.version>
         <datafactory.version>0.8</datafactory.version>
         <!-- plugin versions -->
         <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
