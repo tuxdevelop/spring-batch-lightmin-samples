@@ -17,6 +17,18 @@
             <artifactId>address-migrator-core</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <!-- lightmin -->
+        <dependency>
+            <groupId>org.tuxdevelop</groupId>
+            <artifactId>spring-batch-lightmin-client-classic</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.tuxdevelop</groupId>
+            <artifactId>spring-batch-lightmin-repository-remote</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

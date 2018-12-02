@@ -18,9 +18,15 @@
             <version>${project.version}</version>
         </dependency>
 
+        <!-- lightmin -->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+            <groupId>org.tuxdevelop</groupId>
+            <artifactId>spring-batch-lightmin-client-discovery-consul</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.tuxdevelop</groupId>
+            <artifactId>spring-batch-lightmin-repository-remote</artifactId>
         </dependency>
     </dependencies>
 

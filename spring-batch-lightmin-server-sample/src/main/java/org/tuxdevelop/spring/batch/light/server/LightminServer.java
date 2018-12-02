@@ -2,11 +2,10 @@ package org.tuxdevelop.spring.batch.light.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.tuxdevelop.spring.batch.lightmin.client.configuration.EnableSpringBatchLightminClient;
-import org.tuxdevelop.spring.batch.lightmin.server.configuration.EnableSpringBatchLightminServer;
+import org.tuxdevelop.spring.batch.lightmin.server.annotation.EnableLightminServer;
 
 @SpringBootApplication
-@EnableSpringBatchLightminServer
+@EnableLightminServer
 public class LightminServer {
 
 

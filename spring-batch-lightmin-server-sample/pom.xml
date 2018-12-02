@@ -12,16 +12,17 @@
     <artifactId>spring-batch-lightmin-server-sample</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>org.tuxdevelop</groupId>
-            <artifactId>spring-batch-lightmin-server</artifactId>
-            <version>${lightmin.version}</version>
-        </dependency>
 
         <!-- h2 -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
+        </dependency>
+
+        <!-- lightmin -->
+        <dependency>
+            <groupId>org.tuxdevelop</groupId>
+            <artifactId>spring-batch-lightmin-server-standalone</artifactId>
         </dependency>
     </dependencies>
 

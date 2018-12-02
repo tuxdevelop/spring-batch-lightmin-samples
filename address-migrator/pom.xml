@@ -13,7 +13,6 @@
     <modules>
         <module>address-migrator-boot-client</module>
         <module>address-migrator-core</module>
-        <module>address-migrator-war-client</module>
         <module>address-migrator-boot-embedded</module>
         <module>address-migrator-remote-repository</module>
         <module>address-migrator-service-discovery-consul</module>

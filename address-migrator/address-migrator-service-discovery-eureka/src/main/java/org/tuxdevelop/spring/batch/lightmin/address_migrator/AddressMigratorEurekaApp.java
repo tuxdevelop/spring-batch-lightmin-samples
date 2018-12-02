@@ -3,18 +3,18 @@ package org.tuxdevelop.spring.batch.lightmin.address_migrator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.batch.BatchAutoConfiguration;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.tuxdevelop.spring.batch.lightmin.client.configuration.EnableSpringBatchLightminClient;
+import org.tuxdevelop.spring.batch.lightmin.client.discovery.annotation.EnableLightminClientEureka;
+import org.tuxdevelop.spring.batch.lightmin.repository.annotation.EnableLightminRemoteConfigurationRepository;
 
 @EnableScheduling
-@EnableDiscoveryClient
-@EnableSpringBatchLightminClient
+@EnableLightminClientEureka
+@EnableLightminRemoteConfigurationRepository
 @SpringBootApplication(exclude = {BatchAutoConfiguration.class})
-public class AddressMigratorApp {
+public class AddressMigratorEurekaApp {
 
     public static void main(final String[] args) {
-        SpringApplication.run(AddressMigratorApp.class, args);
+        SpringApplication.run(AddressMigratorEurekaApp.class, args);
     }
 
 }

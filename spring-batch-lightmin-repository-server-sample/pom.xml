@@ -12,16 +12,34 @@
     <artifactId>spring-batch-lightmin-repository-server-sample</artifactId>
 
     <dependencies>
-        <!-- lightmin -->
-        <dependency>
-            <groupId>org.tuxdevelop</groupId>
-            <artifactId>spring-batch-lightmin-repository-server</artifactId>
-            <version>${lightmin.version}</version>
-        </dependency>
+
         <!-- h2 -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
+
+        <!-- lightmin -->
+        <dependency>
+            <groupId>org.tuxdevelop</groupId>
+            <artifactId>spring-batch-lightmin-repository-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.tuxdevelop</groupId>
+            <artifactId>spring-batch-lightmin-repository-server</artifactId>
+        </dependency>
+
+        <!-- spring cloud -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+        </dependency>
+
+        <!--<dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+        </dependency> -->
+
     </dependencies>
 </project>

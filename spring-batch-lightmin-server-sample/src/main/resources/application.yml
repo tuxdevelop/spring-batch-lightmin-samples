@@ -7,9 +7,3 @@ spring:
   batch:
     job:
       enabled: false
-    lightmin:
-      lightmin-repository-type: map
-      batch-repository-type: map
-      server:
-        url: http://localhost:50100/lightmin-server
-        heartbeat-period: 1000

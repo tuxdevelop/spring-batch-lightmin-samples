@@ -11,16 +11,6 @@ spring:
         external-links:
           hystrix: http://localhost:${server.port}/hystrixdashboard
           batchtasks: http://localhost:${server.port}/batchtasks
-      #default jdbc
-      batch-repository-type: jdbc
-      #default jdbc
-      lightmin-repository-type: jdbc
-      #default dataSource
-      data-source-name: dataSource
-      #default dataSource
-      batch-data-source-name: dataSource
-      #default BATCH_
-      repository-table-prefix: BATCH_
     job:
       enabled: false
 

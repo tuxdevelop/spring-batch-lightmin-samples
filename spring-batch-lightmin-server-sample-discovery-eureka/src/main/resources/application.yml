@@ -7,8 +7,5 @@ spring:
     job:
       enabled: false
     lightmin:
-      lightmin-repository-type: jdbc
-      batch-repository-type: map
       server:
-        heartbeat-period: 1000
         discovery-enabled: true

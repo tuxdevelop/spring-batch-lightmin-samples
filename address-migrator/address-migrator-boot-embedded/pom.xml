@@ -20,8 +20,7 @@
 
         <dependency>
             <groupId>org.tuxdevelop</groupId>
-            <artifactId>spring-batch-lightmin-server</artifactId>
-            <version>${lightmin.version}</version>
+            <artifactId>spring-batch-lightmin-embedded</artifactId>
         </dependency>
 
     </dependencies>
