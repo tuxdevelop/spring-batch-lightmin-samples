@@ -1,14 +1,13 @@
 #Server
 server:
   port: 9009
+  servlet:
+    context-path: /addressMigrator
 spring:
   main:
     allow-bean-definition-overriding: true
   application:
     name: address-migrator
-  mvc:
-    servlet:
-      path: /addressMigrator
   batch:
     lightmin:
       client:

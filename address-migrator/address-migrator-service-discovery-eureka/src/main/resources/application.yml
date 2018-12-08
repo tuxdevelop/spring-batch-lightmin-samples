@@ -22,6 +22,3 @@ spring:
         remote:
           server-discovery-name: spring-batch-lightmin-server
           discover-remote-repository: true
-logging:
-  level:
-    org.tuxdevelop: debug
