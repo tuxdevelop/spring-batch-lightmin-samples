@@ -28,7 +28,7 @@
     <version>2.0.0-SNAPSHOT</version>
 
     <properties>
-        <spring-cloud-dependencies.version>Greenwich.M3</spring-cloud-dependencies.version>
+        <spring-cloud-dependencies.version>Greenwich.RC1</spring-cloud-dependencies.version>
         <lightmin.version>2.0.0-SNAPSHOT</lightmin.version>
         <datafactory.version>0.8</datafactory.version>
         <!-- plugin versions -->
