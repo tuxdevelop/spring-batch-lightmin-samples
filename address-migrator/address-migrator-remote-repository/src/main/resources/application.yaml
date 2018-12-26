@@ -7,19 +7,20 @@ spring:
     name: address-migrator-remote-application
   batch:
     lightmin:
-      server:
-        url: http://localhost:50100/lightmin-server
       client:
         external-links:
           hystrix: http://localhost:${server.port}/hystrixdashboard
           batchtasks: http://localhost:${server.port}/batchtasks
-      #default jdbc
-      batch-repository-type: jdbc
-      #default jdbc
-      lightmin-repository-type: remote
-      #default dataSource
-      batch-data-source-name: dataSource
-      #default BATCH_
-      repository-table-prefix: BATCH_
-      #remote repository server url
-      remote-repository-server-url: http://localhost:50000
+        classic:
+          server:
+            url: http://localhost:50100/lightmin-server
+      repository:
+        remote:
+          server-url: http://localhost:50000
+      batch:
+        #default jdbc
+        repository-type: jdbc
+        #default dataSource
+        data-source-name: dataSource
+        #default BATCH_
+        table-prefix: BATCH_

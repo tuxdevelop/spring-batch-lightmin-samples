@@ -1,3 +1,36 @@
 = Spring Batch Lightmin Samples
 
 The project contains sample applications to demonstrate the usage of the Spring Batch Lightmin Library.
+
+== Client Samples
+
+=== address-migrator
+
+* address-migrator-boot-client - classic client example with jdbc repository
+* address-migrator-remote-repository - classic client example with remote repository
+* address-migrator-service-discovery-consul - consul discovery client example
+* address-migrator-service-discovery-eureka - eureka discovery client example
+
+=== lightmin-jpa-application
+
+* sample client to demonstrate how to set up datasources and transaction managers for lightmin, JPA and Spring Batch.
+
+== Repository Server Samples
+
+=== spring-batch-lightmin-repository-server-sample
+
+* sample repository server application
+
+== Server Samples
+
+=== spring-batch-lightmin-server-sample
+
+* classic server sample without service discovery
+
+=== spring-batch-lightmin-server-sample-discovery-consul
+
+* server sample with consul service discovery
+
+=== spring-batch-lightmin-server-sample-discovery-eureka
+
+* server sample with eureka service discovery

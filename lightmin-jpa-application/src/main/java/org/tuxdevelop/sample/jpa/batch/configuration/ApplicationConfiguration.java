@@ -18,7 +18,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.tuxdevelop.sample.jpa.batch.persistence.domain.Customer;
 import org.tuxdevelop.sample.jpa.batch.persistence.repository.CustomerRepository;
-import org.tuxdevelop.spring.batch.lightmin.server.configuration.EnableEmbeddedSpringBatchLightminServer;
+import org.tuxdevelop.spring.batch.lightmin.annotation.EnableLightminEmbedded;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -26,7 +26,7 @@ import javax.sql.DataSource;
 @Slf4j
 @SpringBootApplication
 @EnableTransactionManagement
-@EnableEmbeddedSpringBatchLightminServer
+@EnableLightminEmbedded
 @ComponentScan(basePackages = "org.tuxdevelop.sample.jpa.batch")
 @EnableJpaRepositories(basePackages = "org.tuxdevelop.sample.jpa.batch.persistence.repository")
 public class ApplicationConfiguration {

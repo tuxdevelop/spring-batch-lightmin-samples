@@ -2,15 +2,17 @@ package org.tuxdevelop.spring.batch.lightmin.remote_repository_server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
-import org.tuxdevelop.spring.batch.lightmin.repository.server.configuration.EnableSpringBatchLightminRemoteRepositoryServer;
+import org.tuxdevelop.spring.batch.lightmin.repository.server.configuration.EnableLightminRepositoryServer;
 
 import javax.sql.DataSource;
 
 @SpringBootApplication
-@EnableSpringBatchLightminRemoteRepositoryServer
+@EnableDiscoveryClient
+@EnableLightminRepositoryServer
 public class RemoteRepositoryServerApplication {
 
     public static void main(final String[] args) {

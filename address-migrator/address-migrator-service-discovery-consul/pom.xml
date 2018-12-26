@@ -5,7 +5,7 @@
     <parent>
         <artifactId>address-migrator</artifactId>
         <groupId>org.tuxdevelop</groupId>
-        <version>0.5.0-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -18,9 +18,15 @@
             <version>${project.version}</version>
         </dependency>
 
+        <!-- lightmin -->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+            <groupId>org.tuxdevelop</groupId>
+            <artifactId>spring-batch-lightmin-client-discovery-consul</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.tuxdevelop</groupId>
+            <artifactId>spring-batch-lightmin-repository-remote</artifactId>
         </dependency>
     </dependencies>
 

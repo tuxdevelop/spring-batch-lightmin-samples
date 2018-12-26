@@ -9,20 +9,19 @@ spring:
         external-links:
           hystrix: http://localhost:${server.port}/hystrixdashboard
           batchtasks: http://localhost:${server.port}/batchtasks
-        discovery-enabled: true
-        discover-server: true
-        server-discovery-name: spring-batch-lightmin-server
-      #default jdbc
-      batch-repository-type: jdbc
-      #default jdbc
-      lightmin-repository-type: remote
-      #default dataSource
-      batch-data-source-name: dataSource
-      #default BATCH_
-      repository-table-prefix: BATCH_
-      #remote repository
-      remote-repository-server-discovery-name: spring-batch-lightmin-server
-      discover-remote-repository: true
+        discovery:
+          server-discovery-name: spring-batch-lightmin-server
+      batch:
+        #default jdbc
+        repository-type: jdbc
+        #default dataSource
+        data-source-name: dataSource
+        #default BATCH_
+        table-prefix: BATCH_
+      repository:
+        remote:
+          server-discovery-name: spring-batch-lightmin-server
+          discover-remote-repository: true
 logging:
   level:
     org.tuxdevelop: debug
