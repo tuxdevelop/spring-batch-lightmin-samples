@@ -1,6 +1,7 @@
 server:
   port: 50100
-  servlet-path: /lightmin-server
+  servlet:
+    context-path: /lightmin-server
 spring:
   application:
     name: spring-batch-lightmin-server

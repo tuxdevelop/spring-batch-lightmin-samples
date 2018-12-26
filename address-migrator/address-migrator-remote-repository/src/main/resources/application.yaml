@@ -1,7 +1,8 @@
 #Server
 server:
   port: 9020
-  servlet-path: /addressMigratorRemoteRepository
+  servlet:
+    context-path: /addressMigratorRemoteRepository
 spring:
   application:
     name: address-migrator-remote-application

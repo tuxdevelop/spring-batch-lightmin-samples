@@ -1,8 +1,11 @@
 #Server
 server:
   port: 9009
-  servlet-path: /addressMigrator
+  servlet:
+    context-path: /addressMigrator
 spring:
+  main:
+    allow-bean-definition-overriding: true
   application:
     name: address-migrator
   batch:
