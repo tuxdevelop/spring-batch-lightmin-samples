@@ -30,6 +30,12 @@
             <artifactId>spring-batch-lightmin-repository-server</artifactId>
         </dependency>
 
+        <!-- spring boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
         <!-- spring cloud -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
