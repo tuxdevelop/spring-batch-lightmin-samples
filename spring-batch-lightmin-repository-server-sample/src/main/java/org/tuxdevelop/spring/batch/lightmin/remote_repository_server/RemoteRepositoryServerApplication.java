@@ -6,6 +6,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.tuxdevelop.spring.batch.lightmin.repository.annotation.EnableLightminJdbcConfigurationRepository;
 import org.tuxdevelop.spring.batch.lightmin.repository.server.configuration.EnableLightminRepositoryServer;
 
 import javax.sql.DataSource;
@@ -13,6 +14,7 @@ import javax.sql.DataSource;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableLightminRepositoryServer
+@EnableLightminJdbcConfigurationRepository
 public class RemoteRepositoryServerApplication {
 
     public static void main(final String[] args) {

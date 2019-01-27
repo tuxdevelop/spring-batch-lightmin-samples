@@ -1,8 +1,11 @@
 #Server
 server:
   port: 9020
-  servlet-path: /addressMigratorRemoteRepository
+  servlet:
+    context-path: /addressMigratorRemoteRepository
 spring:
+  main:
+    allow-bean-definition-overriding: true
   application:
     name: address-migrator-remote-application
   batch:

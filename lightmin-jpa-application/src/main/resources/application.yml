@@ -1,3 +1,5 @@
 spring:
   application:
     name: sample-jpa-batch
+  main:
+    allow-bean-definition-overriding: true

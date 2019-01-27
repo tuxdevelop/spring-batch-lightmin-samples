@@ -1,6 +1,8 @@
 server:
   port: 9080
 spring:
+  main:
+    allow-bean-definition-overriding: true
   application:
     name: address-migrator
   batch:
@@ -22,6 +24,3 @@ spring:
         remote:
           server-discovery-name: spring-batch-lightmin-server
           discover-remote-repository: true
-logging:
-  level:
-    org.tuxdevelop: debug
