@@ -29,7 +29,7 @@
 
     <properties>
         <spring-cloud-dependencies.version>Greenwich.RELEASE</spring-cloud-dependencies.version>
-        <lightmin.version>2.0.0</lightmin.version>
+        <lightmin.version>2.0.1</lightmin.version>
         <datafactory.version>0.8</datafactory.version>
         <!-- plugin versions -->
         <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
