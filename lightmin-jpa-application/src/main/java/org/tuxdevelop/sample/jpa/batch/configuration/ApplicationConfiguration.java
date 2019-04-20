@@ -4,12 +4,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.tuxdevelop.sample.jpa.batch.persistence.domain.Customer;
 import org.tuxdevelop.sample.jpa.batch.persistence.repository.CustomerRepository;
 import org.tuxdevelop.spring.batch.lightmin.annotation.EnableLightminEmbedded;
+import org.tuxdevelop.spring.batch.lightmin.repository.annotation.EnableLightminJdbcConfigurationRepository;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -27,6 +28,7 @@ import javax.sql.DataSource;
 @SpringBootApplication
 @EnableTransactionManagement
 @EnableLightminEmbedded
+@EnableLightminJdbcConfigurationRepository
 @ComponentScan(basePackages = "org.tuxdevelop.sample.jpa.batch")
 @EnableJpaRepositories(basePackages = "org.tuxdevelop.sample.jpa.batch.persistence.repository")
 public class ApplicationConfiguration {
@@ -38,19 +40,16 @@ public class ApplicationConfiguration {
     @Bean
     @Qualifier("dataSource")
     @Primary
+    @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource dataSource() {
-        final EmbeddedDatabaseBuilder embeddedDatabaseBuilder = new EmbeddedDatabaseBuilder();
-        embeddedDatabaseBuilder.setType(EmbeddedDatabaseType.H2);
-        embeddedDatabaseBuilder.addScripts("classpath:org/tuxdevelop/spring/batch/lightmin/schema_h2.sql");
-        return embeddedDatabaseBuilder.build();
+        return DataSourceBuilder.create().build();
     }
 
     @Bean
     @Qualifier("jpaDataSource")
+    @ConfigurationProperties(prefix = "spring.my-jpa-datasource")
     public DataSource jpaDataSource() {
-        final EmbeddedDatabaseBuilder embeddedDatabaseBuilder = new EmbeddedDatabaseBuilder();
-        embeddedDatabaseBuilder.setType(EmbeddedDatabaseType.H2);
-        return embeddedDatabaseBuilder.build();
+        return DataSourceBuilder.create().build();
     }
 
     @Bean
@@ -69,7 +68,7 @@ public class ApplicationConfiguration {
         final HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
         hibernateJpaVendorAdapter.setShowSql(false);
         hibernateJpaVendorAdapter.setGenerateDdl(true);
-        hibernateJpaVendorAdapter.setDatabase(Database.H2);
+        hibernateJpaVendorAdapter.setDatabase(Database.MYSQL);
 
         final LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean = new
                 LocalContainerEntityManagerFactoryBean();

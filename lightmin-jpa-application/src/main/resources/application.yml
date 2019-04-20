@@ -1,5 +1,17 @@
+server:
+  port: 50999
 spring:
   application:
     name: sample-jpa-batch
   main:
     allow-bean-definition-overriding: true
+  datasource:
+    username: lightmin
+    password: lightmin
+    jdbc-url: jdbc:mariadb://localhost/lightmin
+    driver-class-name: org.mariadb.jdbc.Driver
+  my-jpa-datasource:
+    username: lightmin
+    password: lightmin
+    jdbc-url: jdbc:mariadb://localhost/lightmin
+    driver-class-name: org.mariadb.jdbc.Driver
