@@ -11,3 +11,8 @@ spring:
     lightmin:
       server:
         discovery-enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
