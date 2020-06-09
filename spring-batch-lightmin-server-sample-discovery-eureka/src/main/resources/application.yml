@@ -3,9 +3,14 @@ server:
 spring:
   application:
     name: spring-batch-lightmin-server
+
   batch:
     job:
       enabled: false
     lightmin:
       server:
         discovery-enabled: true
+
+eureka:
+  instance:
+    hostname: 'localhost'

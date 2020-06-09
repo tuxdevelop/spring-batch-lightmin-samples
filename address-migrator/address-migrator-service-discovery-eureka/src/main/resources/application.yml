@@ -24,3 +24,6 @@ spring:
         remote:
           server-discovery-name: spring-batch-lightmin-server
           discover-remote-repository: true
+eureka:
+  instance:
+    hostname: 'localhost'
