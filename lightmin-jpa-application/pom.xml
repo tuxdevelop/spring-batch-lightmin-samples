@@ -17,6 +17,10 @@
             <groupId>org.tuxdevelop</groupId>
             <artifactId>spring-batch-lightmin-embedded</artifactId>
         </dependency>
+       	<dependency>
+			<groupId>org.tuxdevelop</groupId>
+			<artifactId>spring-batch-lightmin-repository-jdbc</artifactId>
+		</dependency>
         <!-- spring boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
