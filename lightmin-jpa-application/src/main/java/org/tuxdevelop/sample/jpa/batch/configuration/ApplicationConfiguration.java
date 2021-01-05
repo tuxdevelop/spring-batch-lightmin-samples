@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.tuxdevelop.sample.jpa.batch.persistence.domain.Customer;
 import org.tuxdevelop.sample.jpa.batch.persistence.repository.CustomerRepository;
 import org.tuxdevelop.spring.batch.lightmin.annotation.EnableLightminEmbedded;
+import org.tuxdevelop.spring.batch.lightmin.repository.annotation.EnableLightminJdbcConfigurationRepository;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -27,6 +28,7 @@ import javax.sql.DataSource;
 @SpringBootApplication
 @EnableTransactionManagement
 @EnableLightminEmbedded
+@EnableLightminJdbcConfigurationRepository
 @ComponentScan(basePackages = "org.tuxdevelop.sample.jpa.batch")
 @EnableJpaRepositories(basePackages = "org.tuxdevelop.sample.jpa.batch.persistence.repository")
 public class ApplicationConfiguration {
@@ -41,7 +43,7 @@ public class ApplicationConfiguration {
     public DataSource dataSource() {
         final EmbeddedDatabaseBuilder embeddedDatabaseBuilder = new EmbeddedDatabaseBuilder();
         embeddedDatabaseBuilder.setType(EmbeddedDatabaseType.H2);
-        embeddedDatabaseBuilder.addScripts("classpath:org/tuxdevelop/spring/batch/lightmin/schema_h2.sql");
+        embeddedDatabaseBuilder.addScripts("classpath:org/tuxdevelop/spring/batch/lightmin/repository/schema_h2.sql");
         return embeddedDatabaseBuilder.build();
     }
 

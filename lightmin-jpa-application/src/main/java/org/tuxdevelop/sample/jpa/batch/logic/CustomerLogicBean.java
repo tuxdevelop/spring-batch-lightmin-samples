@@ -18,12 +18,14 @@ public class CustomerLogicBean {
         this.customerRepository = customerRepository;
     }
 
-    @Transactional(readOnly = true)
+    @Transactional(
+            readOnly = true,
+            transactionManager = "transactionManager")
     public List<Customer> findAll() {
         return customerRepository.findAll();
     }
 
-    @Transactional
+    @Transactional(transactionManager = "transactionManager")
     public Customer add(final Customer customer) {
         return customerRepository.save(customer);
     }
