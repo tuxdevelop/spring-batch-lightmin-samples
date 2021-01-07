@@ -11,6 +11,12 @@ spring:
     lightmin:
       server:
         discovery-enabled: true
+  cloud:
+    consul:
+      discovery:
+        hostname: 'localhost'
+        port: ${server.port}
+        include-hostname-in-instance-id: true
 management:
   endpoints:
     web:
