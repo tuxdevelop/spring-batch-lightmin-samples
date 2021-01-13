@@ -93,11 +93,11 @@
         </plugins>
     </build>
 
-    <!--repositories>
+    <repositories>
         <repository>
             <id>ossrh</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </repository>
-    </repositories> -->
+    </repositories>
 
 </project>
