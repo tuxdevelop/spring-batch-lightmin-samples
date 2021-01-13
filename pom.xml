@@ -29,7 +29,7 @@
 
     <properties>
         <spring-cloud-dependencies.version>2020.0.0</spring-cloud-dependencies.version>
-        <lightmin.version>2.2.0</lightmin.version>
+        <lightmin.version>2.2.1-SNAPSHOT</lightmin.version>
         <datafactory.version>0.8</datafactory.version>
         <!-- plugin versions -->
         <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
@@ -93,11 +93,11 @@
         </plugins>
     </build>
 
-    <repositories>
+    <!--repositories>
         <repository>
             <id>ossrh</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </repository>
-    </repositories>
+    </repositories> -->
 
 </project>
